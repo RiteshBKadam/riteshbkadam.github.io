@@ -1,3 +1,6 @@
+
+
+
 :root {
   --color-card: rgba(21, 28, 34, 0.89);
   --color-border: #e5e7eb;
@@ -5,6 +8,7 @@
   --color-muted: #f3f4f6;
   --color-muted-foreground: #ffffffce;
   --color-foreground: #eec674;
+  font-family: sans-serif;
 }
 
 body {
@@ -12,7 +16,8 @@ body {
   background: linear-gradient(135deg, #0f161a 70%, #212d35 100%);
   color: #ffffffce;
   overflow-x: hidden;
-  font-family: "Poppins", "Times New Roman", Times, serif;
+  font-family: "IBM Plex Sans", sans-serif; /* Add IBM Plex Sans first */
+
   margin: 0;
   padding: 0;
 }
@@ -55,10 +60,13 @@ body {
 /* Hero Section */
 .heroSection {
   min-height: 78vh;
-  display: flex;  
+  display: flex;
   align-items: center;
+  padding-top: 3%;
   margin-top: 110px;
-  margin-bottom: 100px;
+  margin-bottom: 165px;
+    font-family: "Poppins", "Times New Roman", Times, serif;
+
 }
 
 .gradient-text {
@@ -85,7 +93,7 @@ body {
   flex-direction: row;
   margin-top: 35px;
   justify-content: center;
-  padding-right:0px;
+  padding-right: 0px;
 }
 
 .center {
@@ -219,7 +227,7 @@ body {
 }
 
 .aboutMe-text {
-  width: 54%;
+  width: 85%;
   color: #ffffffce;
   line-height: 1.3;
   font-size: 1.16em;
@@ -273,10 +281,11 @@ body {
 /* Bento-Grid Projects */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 34px;
   padding: 24px 36px 0 36px;
   margin-bottom: 60px;
+  margin-top: 60px;
   justify-items: center;
 }
 .project-card {
@@ -558,11 +567,14 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   overflow: hidden;
+  width: 300px;
+  height: 400px;
 }
 
 .card:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
   border-color: var(--color-foreground);
+  box-shadow: 0px 0 30px rgba(255, 255, 255, 0.5); /* Added white backlit glow */
 }
 
 .card-content {
@@ -643,6 +655,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--color-muted-foreground);
   text-decoration: none;
   display: inline-flex;
+  margin-right: 10px;
   align-items: center;
   transition: color 0.2s;
 }
@@ -662,54 +675,55 @@ body::-webkit-scrollbar-thumb {
 
 /* Android Background Container */
 .android-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vh;
-    height: 100vh;
-    opacity: 0.1;
-    z-index: 1;
-    pointer-events: none; /* allows clicking through shapes */
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 100vh;
+  height: 100vh;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none; /* allows clicking through shapes */
 }
 
 /* Individual Animated Shapes */
 .android-shape {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #3ddc84, #4285f4);
-    animation: float 6s ease-in-out infinite;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3ddc84, #4285f4);
+  animation: float 6s ease-in-out infinite;
 }
 
 .android-shape:nth-child(1) {
-    width: 80px;
-    height: 80px;
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
 }
 
 .android-shape:nth-child(2) {
-    width: 120px;
-    height: 120px;
-    top: 60%;
-    right: 15%;
-    animation-delay: 2s;
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
 }
 
 .android-shape:nth-child(3) {
-    width: 60px;
-    height: 60px;
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 4s;
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
 }
 
 /* Floating Animation */
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(180deg);
-    }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
 }
