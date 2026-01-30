@@ -8,7 +8,7 @@
   --color-muted: #f3f4f6;
   --color-muted-foreground: #ffffffce;
   --color-foreground: #eec674;
-  font-family: sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
   background: linear-gradient(135deg, #0f161a 70%, #212d35 100%);
   color: #ffffffce;
   overflow-x: hidden;
-  font-family: "IBM Plex Sans", sans-serif; /* Add IBM Plex Sans first */
+  font-family: Georgia, 'Times New Roman', Times, serif;
 
   margin: 0;
   padding: 0;
