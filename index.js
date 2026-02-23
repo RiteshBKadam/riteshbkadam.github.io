@@ -43,8 +43,60 @@ function revealOnScroll() {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-// Contact form basic UX (prevent default submission)
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
+// Contact form logic (Web3Forms integration)
+const contactForm = document.querySelector('.contact-form');
+const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+contactForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('Thank you for reaching out! I will get back to you soon.');
+
+  const formData = new FormData(contactForm);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  submitBtn.innerHTML = "Sending...";
+  submitBtn.disabled = true;
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        alert('Thank you! Your message has been sent successfully.');
+        contactForm.reset();
+      } else {
+        console.log(response);
+        alert(json.message || "Something went wrong. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Form submission failed. Please check your internet connection.");
+    })
+    .then(function () {
+      submitBtn.innerHTML = "Send Message";
+      submitBtn.disabled = false;
+    });
+});
+let lastScrollTop = 0;
+const navbar = document.querySelector(".glass-nav");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // Scrolling Down
+    navbar.classList.add("hide");
+  } else {
+    // Scrolling Up
+    navbar.classList.remove("hide");
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
