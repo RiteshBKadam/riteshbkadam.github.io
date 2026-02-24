@@ -5,7 +5,7 @@
   --color-muted: #f3f4f6;
   --color-muted-foreground: #ffffffce;
   --color-foreground: #eec674;
-  font-family: sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
@@ -14,9 +14,14 @@ body {
   color: #ffffffce;
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
-
+  width: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* Glass-morphic Navigation */
@@ -25,17 +30,17 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;
+  width: 90%;
+  max-width: 600px;
   height: 60px;
 
-  z-index: 9999; /* VERY IMPORTANT */
+  z-index: 9999;
+  /* VERY IMPORTANT */
 
-  background: linear-gradient(
-  to right ,
-  #141f28,
-  #2e353b
-);
-  
+  background: linear-gradient(to right,
+      #141f28,
+      #2e353b);
+
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
 
   display: flex;
@@ -54,9 +59,9 @@ body {
 
 .navItems {
   display: inline-block;
-  margin: 0 30px;
+  margin: 0 15px;
   color: #ffffffce;
-  font-size: 1em;
+  font-size: 0.9em;
   letter-spacing: 1px;
   border-radius: 6px;
   padding-bottom: 3px;
@@ -160,6 +165,12 @@ body {
   margin-top: -2%;
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid rgba(150, 211, 244, 0.2);
+  margin: 60px 5%;
+}
+
 
 
 /* About Section */
@@ -167,9 +178,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 40px;
   max-width: 1200px;
-  margin: 150px auto 220px auto;
+  margin: 100px auto;
+  padding: 0 5%;
 }
 
 .hr-spacing {
@@ -252,16 +264,18 @@ body {
 }
 
 .aboutMe-text {
-  width: 85%;
+  width: 100%;
+  max-width: 800px;
   color: #ffffffce;
-  line-height: 1.3;
-  font-size: 1.16em;
+  line-height: 1.6;
+  font-size: 1.1em;
   text-align: justify;
   background: rgba(33, 41, 50, 0.22);
-  padding: 25px 38px;
+  padding: 25px 30px;
   border-radius: 22px;
   box-shadow: 0 2px 16px rgba(30, 44, 50, 0.09);
   border-left: 4px solid #96D3F4;
+  box-sizing: border-box;
 }
 
 /* ===== TIMELINE ===== */
@@ -276,8 +290,8 @@ body {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 245px;
-  /* center of middle column */
+  left: 20%;
+  /* relative position */
   top: 30px;
   width: 2px;
   height: 100%;
@@ -289,11 +303,12 @@ body {
 /* Each Row */
 .timeline-item {
   display: grid;
-  grid-template-columns: 200px 90px 1fr;
+  grid-template-columns: 18% 4% 1fr;
   align-items: start;
   /* align to top */
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   position: relative;
+  gap: 10px;
 }
 
 /* LEFT IMAGE */
@@ -303,11 +318,13 @@ body {
 }
 
 .timeline-left img {
-  width: 170px;
-  height: 170px;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  aspect-ratio: 1/1;
   object-fit: contain;
   border-radius: 50%;
-  margin-top: 30px;
+  margin-top: 10px;
   box-shadow: 0 0 16px rgba(150, 211, 244, 0.6);
 }
 
@@ -321,7 +338,7 @@ body {
   position: absolute;
   top: 30px;
   /* aligns with h3 */
-  left: 50%;
+  left: 29%;
   transform: translateX(-50%);
   width: 18px;
   height: 18px;
@@ -524,7 +541,8 @@ body {
   flex-direction: column;
   gap: 12px;
   min-width: 270px;
-  width: 33vw;
+  width: 100%;
+  max-width: 500px;
 }
 
 .contact-form input,
@@ -643,6 +661,8 @@ body {
   .hr-spacing {
     margin: 0 auto 30px auto;
     padding: 0;
+    align-items: center;
+    width: 100%;
   }
 
   .gradient-text {
@@ -705,6 +725,8 @@ body {
   #projectHeading,
   .aboutMe-text h2 {
     font-size: 1.8rem;
+    margin-left: 5%;
+    text-align: center;
   }
 
   .timeline {
@@ -733,8 +755,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   overflow: hidden;
-  width: 400px;
-  height: 450px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  min-height: 450px;
 }
 
 .card:hover {
@@ -844,15 +868,16 @@ body::-webkit-scrollbar-thumb {
 
 /* Android Background Container */
 .android-bg {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 100vh;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0.2;
-  z-index: 1;
+  z-index: 0.5;
   pointer-events: none;
   /* allows clicking through shapes */
+  overflow: hidden;
 }
 
 /* Individual Animated Shapes */
