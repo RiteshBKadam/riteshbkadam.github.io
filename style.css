@@ -176,12 +176,44 @@ hr {
 /* About Section */
 .aboutMe-container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 40px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 100px auto;
-  padding: 0 5%;
+  padding: 0 36px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  overflow: visible;
+}
+
+.aboutMe-container::before {
+  display: none;
+}
+
+.aboutMe-card {
+  flex: 1;
+  background: var(--color-card);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(150, 211, 244, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutMe-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #eec674, #96D3F4);
 }
 
 .hr-spacing {
@@ -265,17 +297,72 @@ hr {
 
 .aboutMe-text {
   width: 100%;
-  max-width: 800px;
+  max-width: 100%;
   color: #ffffffce;
-  line-height: 1.6;
-  font-size: 1.1em;
-  text-align: justify;
-  background: rgba(33, 41, 50, 0.22);
-  padding: 25px 30px;
-  border-radius: 22px;
-  box-shadow: 0 2px 16px rgba(30, 44, 50, 0.09);
-  border-left: 4px solid #96D3F4;
+  line-height: 1.8;
+  font-size: 1.0rem;
+  text-align: left;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-left: none;
   box-sizing: border-box;
+}
+
+/* What I'm Doing Section */
+.doing-section {
+  flex: 1.6;
+}
+
+.doing-title {
+  color: #eec674;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.doing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.doing-card {
+  background: rgba(30, 44, 50, 0.4);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid rgba(150, 211, 244, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.doing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(150, 211, 244, 0.3);
+}
+
+.doing-icon {
+  font-size: 2.1rem;
+  min-width: 50px;
+  margin-right:10px;
+  display: flex;
+  justify-content: center;
+}
+
+.doing-info h4 {
+  color: #96D3F4;
+  margin: 0 0 5px 0;
+  font-size: 1.15rem;
+}
+
+.doing-info p {
+  color: #ffffffce;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* ===== TIMELINE ===== */
@@ -677,6 +764,12 @@ hr {
     flex-direction: column;
     gap: 34px;
     margin: 80px auto;
+    padding: 0 20px;
+  }
+
+  .aboutMe-card {
+    width: 100%;
+    padding: 30px;
   }
 
   .aboutMe-text {
