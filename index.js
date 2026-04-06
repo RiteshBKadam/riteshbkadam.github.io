@@ -1,11 +1,13 @@
 // Typed.js animation
-var typed = new Typed(".auto-type", {
-  strings: ["Learning, Innovating and Developing!"],
-  typeSpeed: 90,
-  startDelay: 250,
-  backSpeed: 34,
-  loop: false
-});
+if (document.querySelector(".auto-type") && typeof Typed !== "undefined") {
+  var typed = new Typed(".auto-type", {
+    strings: ["Learning, Innovating and Developing!"],
+    typeSpeed: 90,
+    startDelay: 250,
+    backSpeed: 34,
+    loop: false
+  });
+}
 
 // Smooth scroll on navigation clicks
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -19,17 +21,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Custom animated cursor
+const cursor = document.querySelector('.cursor');
+if (cursor) {
+  document.querySelectorAll('a, button, .navItems, .tech-pill, .project-card').forEach(element => {
+    element.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(1.45)';
+      cursor.style.background = 'rgba(218, 157, 95, 1)';
+    });
+    element.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursor.style.background = 'rgba(218, 157, 95, 0.8)';
+    });
+  });
 
-document.querySelectorAll('a, button, .navItems, .tech-pill, .project-card').forEach(element => {
-  element.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(1.45)';
-    cursor.style.background = 'rgba(218, 157, 95, 1)';
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
   });
-  element.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
-    cursor.style.background = 'rgba(218, 157, 95, 0.8)';
-  });
-});
+}
+
 
 // Reveal effects on scroll
 function revealOnScroll() {
@@ -45,9 +55,10 @@ window.addEventListener('DOMContentLoaded', revealOnScroll);
 
 // Contact form logic (Web3Forms integration)
 const contactForm = document.querySelector('.contact-form');
-const submitBtn = contactForm.querySelector('button[type="submit"]');
+if (contactForm) {
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-contactForm.addEventListener('submit', function (e) {
+  contactForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const formData = new FormData(contactForm);
@@ -83,7 +94,9 @@ contactForm.addEventListener('submit', function (e) {
       submitBtn.innerHTML = "Send Message";
       submitBtn.disabled = false;
     });
-});
+  });
+}
+
 let lastScrollTop = 0;
 const navbar = document.querySelector(".glass-nav");
 

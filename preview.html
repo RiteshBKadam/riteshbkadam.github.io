@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>eBook Preview | RITESH KADAM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body id="body">
+  <div class="android-bg" style="display: flex;">
+    <div class="android-shape"></div>
+    <div class="android-shape"></div>
+    <div class="android-shape"></div>
+  </div>
+
+  <nav id="navBar" class="glass-nav">
+    <a href="index.html#heroSection" class="navItems">Home</a>
+    <a href="index.html#about" class="navItems">About</a>
+    <a href="index.html#projects" class="navItems">Projects</a>
+    <a href="index.html#contact" class="navItems">Contact</a>
+  </nav>
+
+  <section class="preview-container">
+    <div class="preview-gallery scroll-fade">
+      <div class="main-preview-img">
+        <!-- Default shows page 1 -->
+        <img id="mainImage" src="/resources/ebook_page_1.png" alt="Preview Page 1">
+      </div>
+      <div class="thumbnails">
+        <div class="thumbnail active" onclick="changeImage('/resources/ebook_page_1.png', this)">
+          <img src="/resources/ebook_page_1.png" alt="Thumbnail 1">
+        </div>
+        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_2.png', this)">
+          <img src="/resources/ebook_page_2.png" alt="Thumbnail 2">
+        </div>
+        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_3.png', this)">
+          <img src="/resources/ebook_page_3.png" alt="Thumbnail 3">
+        </div>
+        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_4.png', this)">
+          <img src="/resources/ebook_page_4.png" alt="Thumbnail 4">
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-details scroll-fade">
+      <h1>Demystifying AI & System Architecture</h1>
+      <div class="preview-author">By Ritesh Kadam</div>
+
+      <div class="price">
+        ₹499 <span>₹999</span>
+      </div>
+
+      <p class="preview-description">
+        From Code to Impact is a practical guide designed to help mobile developers move beyond simply building
+        applications and start creating meaningful, real-world solutions. It focuses on developing a structured approach
+        to problem-solving, product thinking, and scalable development practices.
+        <br></br>
+        The book addresses a common gap in the developer journey—while many learn how to build apps, few learn how to
+        think through problems, design effective solutions, and deliver impact. It provides a clear path to bridge that
+        gap.
+      </p>
+
+      <form class="buy-form" onsubmit="handleBuyClick(event)">
+        <input type="email" id="buyer-email" placeholder="Enter your email to receive the eBook" required />
+        <!-- Mock Razorpay Buy Button -->
+        <button type="submit">
+          Buy Now via Razorpay
+        </button>
+      </form>
+
+      <ul class="buy-features">
+        <li>Instant PDF download delivered to your email</li>
+        <li>120+ pages of high-quality content & diagrams</li>
+        <li>Real-world case studies in Android & AI architectures</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cursor"></div>
+
+  <script src="index.js"></script>
+  <script>
+    // Simple gallery image switcher
+    function changeImage(imageSrc, element) {
+      document.getElementById('mainImage').src = imageSrc;
+      document.querySelectorAll('.thumbnail').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    // Razorpay Link Integration
+    function handleBuyClick(event) {
+      event.preventDefault();
+      const email = document.getElementById('buyer-email').value;
+
+      const razorpayLink = "https://rzp.io/rzp/nPPTPL0W";
+
+      // Redirects user to checkout pre-filled with their email address
+      window.location.href = `${razorpayLink}?email=${encodeURIComponent(email)}`;
+    }
+  </script>
+</body>
+
+</html>

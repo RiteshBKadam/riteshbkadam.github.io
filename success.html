@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful | RITESH KADAM</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    .success-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #3ddc84;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #000;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .success-container h1 {
+      color: #eec674;
+      margin-bottom: 15px;
+    }
+
+    .success-container p {
+      color: #ffffffce;
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-download {
+      padding: 12px 30px;
+      background: linear-gradient(150deg, #eec674 10%, #57c6e1 100%);
+      color: #000;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-download:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navBar" class="glass-nav">
+    <a href="index.html#heroSection" class="navItems">Home</a>
+    <a href="index.html#projects" class="navItems">Projects</a>
+  </nav>
+
+  <div class="success-container">
+    <div class="success-icon">✓</div>
+    <h1>Payment Successful!</h1>
+    <p>Thank you for purchasing <strong>From Code to Impact</strong>. Your transaction has been completed successfully.
+    </p>
+
+    <p>Your eBook is ready to download. A copy of the receipt has also been sent to your email.</p>
+
+    <!-- UPDATE THE HREF BELOW WITH THE ACTUAL LINK OR FILE TO YOUR PDF -->
+    <a href="#" class="btn-download" download>Download eBook PDF</a>
+  </div>
+
+</body>
+
+</html>
