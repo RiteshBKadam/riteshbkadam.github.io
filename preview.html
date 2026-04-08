@@ -99,20 +99,20 @@
       const email = document.getElementById('buyer-email').value;
       const submitBtn = event.target.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
-      
+
       submitBtn.innerText = "Working...";
       submitBtn.disabled = true;
 
       try {
         // Note: Change 'http://localhost:3000' to your deployed server URL (e.g. on Render) before pushing to production
-        const response = await fetch('http://localhost:3000/create-payment-link', {
+        const response = await fetch('https://riteshbkadam-github-io.onrender.com/create-payment-link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email })
         });
-        
+
         const data = await response.json();
-        
+
         if (data.short_url) {
           // Redirect the user directly to checkout
           window.location.href = data.short_url;
