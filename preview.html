@@ -27,25 +27,38 @@
   </nav>
 
   <section class="preview-container">
-    <div class="preview-gallery scroll-fade">
-      <div class="main-preview-img">
-        <!-- Default shows page 1 -->
-        <img id="mainImage" src="/resources/ebook_page_1.png" alt="Preview Page 1">
+    <div class="gallery-wrapper scroll-fade" style="display: flex; flex-direction: column; gap: 30px;">
+
+      <!-- Top Row: Gallery (Main image right, thumbnails left based on order -1 css) -->
+      <div class="preview-gallery">
+        <div class="main-preview-img">
+          <!-- Default shows page 1 -->
+          <img id="mainImage" src="/resources/ebook_page_1.png" alt="Preview Page 1">
+        </div>
+        <div class="thumbnails">
+          <div class="thumbnail active" onclick="changeImage('/resources/ebook_page_1.png', this)">
+            <img src="/resources/ebook_page_1.png" alt="Thumbnail 1">
+          </div>
+          <div class="thumbnail" onclick="changeImage('/resources/ebook_page_2.png', this)">
+            <img src="/resources/ebook_page_2.png" alt="Thumbnail 2">
+          </div>
+          <div class="thumbnail" onclick="changeImage('/resources/ebook_page_3.png', this)">
+            <img src="/resources/ebook_page_3.png" alt="Thumbnail 3">
+          </div>
+          <div class="thumbnail" onclick="changeImage('/resources/ebook_page_4.png', this)">
+            <img src="/resources/ebook_page_4.png" alt="Thumbnail 4">
+          </div>
+        </div>
       </div>
-      <div class="thumbnails">
-        <div class="thumbnail active" onclick="changeImage('/resources/ebook_page_1.png', this)">
-          <img src="/resources/ebook_page_1.png" alt="Thumbnail 1">
-        </div>
-        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_2.png', this)">
-          <img src="/resources/ebook_page_2.png" alt="Thumbnail 2">
-        </div>
-        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_3.png', this)">
-          <img src="/resources/ebook_page_3.png" alt="Thumbnail 3">
-        </div>
-        <div class="thumbnail" onclick="changeImage('/resources/ebook_page_4.png', this)">
-          <img src="/resources/ebook_page_4.png" alt="Thumbnail 4">
-        </div>
+
+      <!-- Bottom Column: Lottie Animation below both -->
+      <div class="lottie-placeholder"
+        style="display: flex; justify-content: center; align-items: center; padding: 0px;">
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
+        <dotlottie-wc src="https://lottie.host/a51c66d8-8892-43e9-a2eb-d4f485d11407/8nAgd7vZeo.lottie"
+          style="width: 350px; height: 350px" autoplay loop></dotlottie-wc>
       </div>
+
     </div>
 
     <div class="preview-details scroll-fade">
@@ -66,19 +79,50 @@
         gap.
       </p>
 
-      <form class="buy-form" onsubmit="handleBuyClick(event)">
-        <input type="email" id="buyer-email" placeholder="Enter your email to receive the eBook" required />
-        <!-- Mock Razorpay Buy Button -->
-        <button type="submit">
-          Buy Now
-        </button>
+      <form class="buy-form" id="buyForm" onsubmit="handleBuyClick(event)">
+        <label for="buyer-email" class="email-label">Enter your email to receive the eBook:</label>
+        <input type="email" id="buyer-email" placeholder="Email address" required />
       </form>
+
+      <div class="action-buttons buy-btn-container" style="display: flex; gap: 15px; margin-top: 15px;">
+        <button type="submit" form="buyForm" name="product" value="ebook" class="btn-buy"
+          style="flex: 1; padding: 15px 0; background: linear-gradient(150deg, #eec674 10%, #57c6e1 100%); color: #000; border: none; border-radius: 12px; font-size: 1.1em; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(238, 198, 116, 0.3); transition: all 0.3s ease;">
+          Buy eBook
+        </button>
+      </div>
 
       <ul class="buy-features">
         <li>Instant PDF download delivered to your email</li>
         <li>20+ pages of high-quality content & diagrams</li>
         <li>Real-world case studies in Mobile Application & Architectures</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="session-section-wrapper scroll-fade"
+    style="max-width: 1200px; margin: 0 auto 100px auto; padding: 0 36px;">
+    <div class="session-card-premium" style="margin-top: 0;">
+      <div class="session-badge">1:1 CONSULTATION</div>
+      <h3 class="session-title">Get unstuck, faster.</h3>
+      <p class="session-desc">
+        Whether you're building your first product, scaling an existing system, or struggling with technical decisions —
+        this session is designed to give you clarity, direction, and confidence. </p>
+
+      <ul class="session-highlights" style="display: flex; flex-direction: column; gap: 5px; flex-wrap: wrap;">
+        <li style="margin-bottom: 0;"><span class="highlight-icon">🎯</span> 45-min focused, dedicated virtual call</li>
+        <li style="margin-bottom: 0;"><span class="highlight-icon">🔥</span> Actionable solutions for your product</li>
+        <li style="margin-bottom: 0;"><span class="highlight-icon">💡</span> Open Q&A — ask anything</li>
+      </ul>
+
+      <div class="session-cta-container"
+        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; text-align: left; gap: 20px;">
+        <span class="session-subtext" style="margin-top: 0; font-size: 1.1rem; color: #eec674;">🚀 Stop guessing. Start
+          building right.</span>
+        <button type="button" class="btn-book-premium" onclick="handleBookSession(this)"
+          style="max-width: 300px; margin: 0;">
+          Book Session
+        </button>
+      </div>
     </div>
   </section>
 
@@ -93,11 +137,41 @@
       element.classList.add('active');
     }
 
+    // Razorpay Link Integration (Session)
+    async function handleBookSession(btn) {
+      const originalText = btn.innerText;
+      btn.innerText = "Working...";
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('http://localhost:3000/create-payment-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product: 'session' })
+        });
+
+        const data = await response.json();
+
+        if (data.short_url) {
+          window.location.href = data.short_url;
+        } else {
+          alert("Failed to create payment link: " + (data.error || "Unknown error"));
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Server is currently unreachable. Make sure your backend is running.");
+      } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
+    }
+
     // Razorpay Link Integration
     async function handleBuyClick(event) {
       event.preventDefault();
       const email = document.getElementById('buyer-email').value;
-      const submitBtn = event.target.querySelector('button[type="submit"]');
+      const submitBtn = event.submitter;
+      const product = submitBtn.value;
       const originalText = submitBtn.innerText;
 
       submitBtn.innerText = "Working...";
@@ -105,10 +179,10 @@
 
       try {
         // Note: Change 'http://localhost:3000' to your deployed server URL (e.g. on Render) before pushing to production
-        const response = await fetch('https://riteshbkadam-github-io.onrender.com/create-payment-link', {
+        const response = await fetch('http://localhost:3000/create-payment-link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email })
+          body: JSON.stringify({ email: email, product: product })
         });
 
         const data = await response.json();

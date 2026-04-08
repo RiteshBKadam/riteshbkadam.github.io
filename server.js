@@ -19,30 +19,35 @@ const razorpay = new Razorpay({
 // Endpoint to create a dynamic payment link
 app.post('/create-payment-link', async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, product } = req.body;
 
-    if (!email) {
+    if (product !== 'session' && !email) {
       return res.status(400).json({ error: "Email is required" });
     }
 
-    const amount = Number(process.env.RAZORPAY_AMOUNT_PAISE) || 2900; // default 29 INR in paise
+    let amount = Number(process.env.RAZORPAY_AMOUNT_PAISE) || 2900; // default 29 INR in paise
+    let description = process.env.RAZORPAY_DESCRIPTION || "From Code To Impact eBook";
+
+    if (product === 'session') {
+      amount = 19900;
+      description = "1:1 Virtual Call with Ritesh Kadam";
+    }
+
     const currency = process.env.RAZORPAY_CURRENCY || "INR";
-    const description = process.env.RAZORPAY_DESCRIPTION || "From Code To Impact eBook";
 
     const paymentLinkOptions = {
       amount: amount,
       currency: currency,
       description: description,
-      customer: {
-        email: email
-      },
       notify: {
         email: false
-      },
-      notes: {
-        buyer_email: email
       }
     };
+
+    if (email) {
+      paymentLinkOptions.customer = { email: email };
+      paymentLinkOptions.notes = { buyer_email: email };
+    }
 
     const paymentLink = await razorpay.paymentLink.create(paymentLinkOptions);
 
