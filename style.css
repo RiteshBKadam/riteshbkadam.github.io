@@ -66,12 +66,12 @@ body {
   border-radius: 6px;
   padding-bottom: 3px;
   transition: 0.22s;
+  text-decoration: none;
 }
 
 .navItems:hover {
   color: #da9d5f;
   transform: scale(1.15) translateY(-2px);
-  text-decoration: underline;
 }
 
 /* Hero Section */
@@ -194,7 +194,7 @@ hr {
 }
 
 .aboutMe-card {
-  flex: 1;
+  flex: 1.2;
   background: var(--color-card);
   padding: 40px;
   border-radius: 25px;
@@ -310,9 +310,54 @@ hr {
   box-sizing: border-box;
 }
 
+.tech-heading {
+  color: #eec674;
+  font-size: 1.4rem;
+  margin-top: 15px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-list li {
+  background: rgba(150, 211, 244, 0.1);
+  border: 1px solid rgba(150, 211, 244, 0.2);
+  color: #ffffffce;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.tech-list li::before {
+  content: "▹";
+  margin-right: 8px;
+  color: #eec674;
+  font-size: 1.1rem;
+}
+
+.tech-list li:hover {
+  background: rgba(238, 198, 116, 0.15);
+  border-color: rgba(238, 198, 116, 0.4);
+  color: #eec674;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* What I'm Doing Section */
 .doing-section {
-  flex: 1.6;
+  flex: 1.4;
 }
 
 .doing-title {
@@ -1018,108 +1063,119 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* eBook Promo Card in About Me */
-.ebook-promo-card {
+/* eBook Banner Section */
+.ebook-banner {
   display: flex;
-  background: rgba(30, 44, 50, 0.4);
+  background: var(--color-card);
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(150, 211, 244, 0.1);
-  border-radius: 16px;
-  margin: 30px 24px 10px 24px;
-  padding: 20px;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  align-items: center;
-  gap: 20px;
-}
-
-.ebook-promo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-color: rgba(238, 198, 116, 0.4);
-  cursor: pointer;
-}
-
-.ebook-promo-img {
-  width: 110px;
-  flex-shrink: 0;
-  border-radius: 8px;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ebook-promo-img img {
+.ebook-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, #eec674, #96D3F4);
 }
 
-.ebook-promo-info {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+.ebook-banner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  border-color: rgba(238, 198, 116, 0.3);
+}
+
+.ebook-banner-content {
+  flex: 1;
+}
+
+.ebook-banner-content h2 {
+  font-size: 2.5rem;
+  color: #eec674;
+  margin: 10px 0 20px 0;
+  line-height: 1.2;
+}
+
+.ebook-banner-content p {
+  color: #ffffffce;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 .ebook-badge {
   font-size: 0.75rem;
   font-weight: 700;
   color: #212636;
-  background: linear-gradient(90deg, #eec674, #57c6e1);
-  padding: 4px 10px;
+  background: linear-gradient(90deg, #058473, #57c6e1);
+  padding: 6px 14px;
   border-radius: 20px;
-  align-self: flex-start;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 
-.ebook-promo-info h4 {
-  color: #eec674;
-  margin: 0 0 6px 0;
-  font-size: 1.25rem;
-}
-
-.ebook-promo-info p {
-  color: #ffffffce;
-  margin: 0 0 14px 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.ebook-action {
-  display: flex;
+.ebook-banner-btn {
+  display: inline-flex;
   align-items: center;
-  color: #96D3F4;
-  font-weight: 600;
-  font-size: 0.95rem;
-  gap: 8px;
-  transition: color 0.3s ease;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(150deg, #eec674 10%, #57c6e1 100%);
+  color: #000;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(238, 198, 116, 0.3);
+  transition: all 0.3s ease;
 }
 
-.ebook-promo-card:hover .ebook-action {
-  color: #eec674;
+.ebook-banner-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(238, 198, 116, 0.5);
 }
 
 .arrow-icon {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: transform 0.3s ease;
 }
 
-.ebook-promo-card:hover .arrow-icon {
+.ebook-banner-btn:hover .arrow-icon {
   transform: translateX(5px);
 }
 
-@media (max-width: 600px) {
-  .ebook-promo-card {
+.ebook-banner-img {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ebook-banner-img img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+
+.ebook-banner:hover .ebook-banner-img img {
+  transform: scale(1.07) rotate(2deg);
+}
+
+@media (max-width: 960px) {
+  .ebook-banner {
     flex-direction: column;
     text-align: center;
-    margin: 20px 0 0 0;
-  }
-
-  .ebook-badge {
-    align-self: center;
-  }
-
-  .ebook-action {
-    justify-content: center;
+    padding: 10px;
   }
 }
 
