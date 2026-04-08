@@ -841,38 +841,114 @@ hr {
 }
 
 @media (max-width: 650px) {
+  /* Navbar */
+  .glass-nav {
+    width: 95%;
+    padding: 8px 5px;
+    height: auto;
+    min-height: 50px;
+    flex-wrap: wrap; 
+    border-radius: 18px;
+  }
   .navItems {
-    margin: 0 10px;
-    font-size: 0.9em;
+    margin: 5px 8px;
+    font-size: 0.85em;
   }
 
+  /* Grids */
   .bento-grid {
     grid-template-columns: 1fr;
   }
-
-  .boxAbout {
-    width: 280px;
-    height: 280px;
+  .doing-grid {
+    grid-template-columns: 1fr; 
   }
 
+  /* Spacing and Cards */
+  .boxAbout {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .aboutMe-card {
+    padding: 20px;
+  }
+  .aboutMe-text {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .tech-heading {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .tech-list {
+    justify-content: center;
+  }
+  .doing-card {
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .doing-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Typography */
   .gradient-text {
     font-size: 2rem;
   }
-
+  .auto-type {
+    font-size: 1.3rem !important;
+  }
   .partitionsTitle,
   #projectHeading,
-  .aboutMe-text h2 {
-    font-size: 1.8rem;
-    margin-left: 5%;
+  .aboutMe-text h2,
+  .doing-title {
+    font-size: 1.6rem;
+    margin-left: 0;
     text-align: center;
   }
 
+  /* Timeline */
   .timeline {
+    padding: 0 15px;
+    margin-top: 40px;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 0 35px 0;
+    gap: 15px;
+  }
+  .timeline-center {
+    display: none;
+  }
+  .timeline-content {
+    width: 100%;
     padding: 20px;
   }
+  .timeline-content h3 {
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+  .timeline-left img {
+    margin: 0;
+    max-width: 90px;
+  }
 
-  .timeline-item {
-    margin: 12px 0;
+  /* eBook modifications */
+  .ebook-banner {
+    padding: 25px 20px;
+  }
+  .ebook-banner-content h2 {
+    font-size: 1.8rem;
   }
 }
 
