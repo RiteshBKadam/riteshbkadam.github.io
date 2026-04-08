@@ -94,14 +94,38 @@
     }
 
     // Razorpay Link Integration
-    function handleBuyClick(event) {
+    async function handleBuyClick(event) {
       event.preventDefault();
       const email = document.getElementById('buyer-email').value;
+      const submitBtn = event.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerText;
+      
+      submitBtn.innerText = "Working...";
+      submitBtn.disabled = true;
 
-      const razorpayLink = "https://rzp.io/rzp/gnJqf3ak";
-
-      // Redirects user to checkout pre-filled with their email address
-      window.location.href = `${razorpayLink}?email=${encodeURIComponent(email)}`;
+      try {
+        // Note: Change 'http://localhost:3000' to your deployed server URL (e.g. on Render) before pushing to production
+        const response = await fetch('http://localhost:3000/create-payment-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        
+        const data = await response.json();
+        
+        if (data.short_url) {
+          // Redirect the user directly to checkout
+          window.location.href = data.short_url;
+        } else {
+          alert("Failed to create payment link: " + (data.error || "Unknown error"));
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Server is currently unreachable. Make sure your backend is running.");
+      } finally {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      }
     }
   </script>
 </body>
