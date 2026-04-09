@@ -2595,4 +2595,16 @@ body::-webkit-scrollbar-thumb {
   .price {
     font-size: 2rem;
   }
+
+  .preview-gallery {
+    flex-direction: column !important;
+  }
+
+  .thumbnails {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    order: 1 !important;
+    margin-top: 10px;
+  }
 }
