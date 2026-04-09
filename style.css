@@ -2598,13 +2598,29 @@ body::-webkit-scrollbar-thumb {
 
   .preview-gallery {
     flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .main-preview-img {
+    order: 0 !important;
+    width: 100% !important;
   }
 
   .thumbnails {
     flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
     order: 1 !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 8px;
     margin-top: 10px;
+  }
+
+  .thumbnail {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 100px;
   }
 }
