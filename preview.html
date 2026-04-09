@@ -53,10 +53,10 @@
 
       <!-- Bottom Column: Lottie Animation below both -->
       <div class="lottie-placeholder"
-        style="display: flex; justify-content: center; align-items: center; padding: 0px;">
+        style="display: flex; justify-content: center; align-items: center; padding: 0px; width: 100%;">
         <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
         <dotlottie-wc src="https://lottie.host/a51c66d8-8892-43e9-a2eb-d4f485d11407/8nAgd7vZeo.lottie"
-          style="width: 350px; height: 350px" autoplay loop></dotlottie-wc>
+          class="responsive-lottie" autoplay loop></dotlottie-wc>
       </div>
 
     </div>
@@ -100,7 +100,7 @@
   </section>
 
   <section class="session-section-wrapper scroll-fade"
-    style="max-width: 1200px; margin: 0 auto 100px auto; padding: 0 36px;">
+    style="max-width: 1200px; margin: 0 auto 100px auto;">
     <div class="session-card-premium" style="margin-top: 0;">
       <div class="session-badge">1:1 CONSULTATION</div>
       <h3 class="session-title">Get unstuck, faster.</h3>
@@ -114,12 +114,9 @@
         <li style="margin-bottom: 0;"><span class="highlight-icon">💡</span> Open Q&A — ask anything</li>
       </ul>
 
-      <div class="session-cta-container"
-        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; text-align: left; gap: 20px;">
-        <span class="session-subtext" style="margin-top: 0; font-size: 1.1rem; color: #eec674;">🚀 Stop guessing. Start
-          building right.</span>
-        <button type="button" class="btn-book-premium" onclick="handleBookSession(this)"
-          style="max-width: 300px; margin: 0;">
+      <div class="session-cta-container">
+        <span class="session-subtext">🚀 Stop guessing. Start building right.</span>
+        <button type="button" class="btn-book-premium" onclick="handleBookSession(this)">
           Book Session
         </button>
       </div>

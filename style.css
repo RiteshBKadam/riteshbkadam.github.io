@@ -2519,3 +2519,80 @@ body::-webkit-scrollbar-thumb {
     gap: 40px !important;
   }
 }
+
+/* Responsive Fixes for Preview Page */
+.responsive-lottie {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.session-section-wrapper {
+  padding: 0 36px;
+}
+
+.session-cta-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: left;
+  gap: 20px;
+}
+
+.session-subtext {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #eec674;
+}
+
+.btn-book-premium {
+  max-width: 300px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .preview-container {
+    padding: 0 20px !important;
+    gap: 30px !important;
+    margin-top: 80px !important;
+  }
+  
+  .responsive-lottie {
+    max-width: 280px;
+  }
+  
+  .session-section-wrapper {
+    padding: 0 20px;
+  }
+  
+  .session-cta-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .btn-book-premium {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .session-subtext {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .preview-details {
+    padding: 25px;
+  }
+
+  .preview-details h1 {
+    font-size: 1.8rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+}
