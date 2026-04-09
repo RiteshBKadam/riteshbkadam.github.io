@@ -155,7 +155,7 @@
         }
       } catch (error) {
         console.error(error);
-        alert("Server is currently unreachable. Make sure your backend is running.");
+        alert("Server is currently unreachable. Wait for 90 secs and try again");
       } finally {
         btn.innerText = originalText;
         btn.disabled = false;
@@ -191,7 +191,7 @@
         }
       } catch (error) {
         console.error(error);
-        alert("Server is currently unreachable. Make sure your backend is running.");
+        alert("Server is currently unreachable. Wait for 90 secs and try again");
       } finally {
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
