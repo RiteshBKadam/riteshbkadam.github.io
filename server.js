@@ -54,9 +54,23 @@ app.post('/create-payment-link', async (req, res) => {
     // Return standard short URL
     res.json({ short_url: paymentLink.short_url });
   } catch (error) {
-    console.error("Error creating payment link:", error);
-    res.status(500).json({ error: "Failed to create payment link" });
+  console.log("===== ERROR START =====");
+
+  console.log(error);
+
+  if (error.error) {
+    console.log("Razorpay Error:");
+    console.log(error.error);
   }
+
+  console.log("===== ERROR END =====");
+
+  res.status(500).json({
+    success: false,
+    message: error.message,
+    error: error.error || error
+  });
+}
 });
 
 // Basic check route
